@@ -9,12 +9,10 @@ from openai import OpenAI
 client = OpenAI(api_key="")
 
 
-# CHANGE BETWEEN GOLD LABEL 
-# POSITIVE AND NEGATIVE SAMPLES
-INPUT_CSV = "ethics_aita_500_positive.csv"
-# INPUT_CSV = "ethics_aita_500_negative.csv"
-OUTPUT_CSV = "aita_500_pos_samples_fig_gpt.csv"
-# OUTPUT_CSV = "aita_500_neg_samples_fig_gpt.csv"
+# Reads the input file
+INPUT_CSV = ""
+# change name of the output file
+OUTPUT_CSV = ""
 
 # =====================
 # Clean question
@@ -56,23 +54,26 @@ for _, row in tqdm(df.iterrows(), total=len(df)):
         input=[
             {
                 "role": "system",
-                "content": '''You are an expert in sarcasm. 
-                You are given a question title from Reddit’s AITA (Am I The Asshole) dataset. 
-                Your task is to rewrite the title using **strong, explicit sarcasm** while preserving its original meaning. 
-
+                "content": '''You are an expert in figurative text generation, particular metaphors.
+                You are given a question title from Reddit's AITA (Am I The Asshole) dataset.
+                Your task is to rewrite the title using **clear, natural metaphor** while preserving its original meaning.
+                
                 Rules:
                 * Preserve the original events, intent, and moral framing.
                 * Do NOT change who did what or introduce any new facts.
                 * Begin the rewritten title with “aita”.
-                * Make the sarcasm obvious and emotionally expressive.
-                * Do NOT explain the sarcasm.
+                * Replace one literal expressions with metaphorical language that conveys the same
+                underlying meaning.
+                * The metaphor should arise naturally from the situation.
+                * Make the metaphor vivid, coherent, and easy to understand.
+                * Do NOT explain the rewrite.
                 * Output ONLY the rewritten title.'''
             },
-            {"role": "user", "content": "aita for ignoring my roommate after she insulted me?"},
-            {"role": "assistant", "content": "aita for apparently committing the unforgivable act of ignoring my roommate after she insulted me?"},
 
-            {"role": "user", "content": f"{title}"},
+            {"role": "user", "content": "aita for ignoring my roommate after she insulted me?"},
+            {"role": "assistant", "content": "aita for building a wall between my roommate and me after she insulted me?"},
             
+            {"role": "user", "content": f"{title}"},
         ]
     )
 
@@ -92,3 +93,8 @@ out_df.to_csv(OUTPUT_CSV, index=False)
 
 print("Saved:", OUTPUT_CSV)
 print(out_df.head())
+
+
+
+
+

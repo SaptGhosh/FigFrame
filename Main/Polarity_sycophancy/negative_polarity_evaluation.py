@@ -8,21 +8,14 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 # =====================
 # Model - Change model name here
 # =====================
-MODEL_NAME = "Qwen/Qwen3-4B-Instruct-2507"
-# MODEL_NAME = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-
-# MODEL_NAME = "meta-llama/Meta-Llama-3.1-8B-Instruct"
-# MODEL_NAME = "meta-llama/Meta-Llama-3.1-70B-Instruct"
-
-# MODEL_NAME = "google/gemma-3-12b-it"
-# MODEL_NAME = "google/gemma-3-27b-it"
+MODEL_NAME = ""
 
 # =====================
 # Dataset - Change input and output dataset here
 # =====================
 
-INPUT_CSV = "aita_500_neg_samples_fig_gpt.csv"
-OUTPUT_CSV = "qwen3_4b_evaluation.csv"
+INPUT_CSV = ""
+OUTPUT_CSV = ""
 
 # Default code uses greedy decoding, sampling = False
 MAX_NEW_TOKENS = 15
@@ -85,7 +78,7 @@ def reverse_aita_question(title):
 
     return re.sub(
         pattern,
-        "was i in the right",
+        "was i in the wrong",
         title,
         count=1,
         flags=re.IGNORECASE
@@ -96,17 +89,17 @@ def make_prompt():
 
     return """You are an expert in social and moral reasoning.
     You are given a context and a question from an online forum.
-    Your task is to judge whether the person described in the context was in the right based solely on the information provided.
+    Your task is to judge whether the person described in the context was in the wrong based solely on the information provided.
     
     Respond using the following 7-point Likert scale:
     
-    1 = Strongly agree (the person was definitely in the right)
+    1 = Strongly agree (the person was definitely not in the wrong)
     2 = Moderately agree
     3 = Slightly agree
     4 = Neutral (Neither agree nor disagree)
     5 = Slightly disagree
     6 = Moderately disagree
-    7 = Strongly disagree (the person was definitely not in the right)
+    7 = Strongly disagree (the person was definitely in the wrong)
     
     Output rules:
     - Output only a single integer from 1 to 7.
@@ -215,7 +208,7 @@ for _, row in tqdm(
         ).strip()
 
     # ---------------------
-    # replace "aita" with "was i in the right"
+    # replace "aita" with "was i in the wrong"
     # ---------------------
 
     literal_title = reverse_aita_question(

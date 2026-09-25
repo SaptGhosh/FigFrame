@@ -8,22 +8,20 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 # =====================
 # Model - Change model name here
 # =====================
-MODEL_NAME = "Qwen/Qwen3-4B-Instruct-2507"
-# MODEL_NAME = "Qwen/Qwen3-30B-A3B-Instruct-2507"
+MODEL_NAME = ""
 
-# MODEL_NAME = "meta-llama/Meta-Llama-3.1-8B-Instruct"
-# MODEL_NAME = "meta-llama/Meta-Llama-3.1-70B-Instruct"
-
-# MODEL_NAME = "google/gemma-3-12b-it"
-# MODEL_NAME = "google/gemma-3-27b-it"
-
-POS_FILE = "likert_pos_gemma_12b.csv"
-NEG_FILE = "likert_neg_gemma_12b.csv"
+# this code assumes the input file is separated into two files
+# POS --> samples where reddit users verdict was positive (not an asshole)
+# NEG --> samples where reddit users verdict was negative (is an asshole)
+# this separation was done for the purposes of filtering out question pairs
+# with highly difference token length
+POS_FILE = "" 
+NEG_FILE = ""
 
 MAX_INPUT_TOKENS = 2048
 
 # Choose layer manually
-ATTENTION_LAYER = 21
+ATTENTION_LAYER = 
 
 # Set None for all rows
 N_ROWS = None

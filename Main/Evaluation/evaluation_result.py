@@ -1,13 +1,11 @@
 import pandas as pd
 
 # ============================================================
-# Read data
+# Read data - change file name here
 # ============================================================
 
-df1 = pd.read_csv("likert_pos_qwen_4b.csv")
-df2 = pd.read_csv("likert_neg_qwen_4b.csv")
+df = pd.read_csv("")
 
-df = pd.concat([df1, df2], ignore_index=True)
 
 cols = ["literal_judgement", "figurative_judgement"]
 
@@ -146,7 +144,7 @@ print(
 
 
 # ============================================================
-# SANITY CHECKS
+# sanity checks
 # ============================================================
 
 assert p_total_count == p_harsh_count + p_lenient_count

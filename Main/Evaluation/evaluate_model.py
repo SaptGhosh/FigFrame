@@ -8,21 +8,14 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 # =====================
 # Model - Change model name here
 # =====================
-MODEL_NAME = "Qwen/Qwen3-4B-Instruct-2507"
-# MODEL_NAME = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-
-# MODEL_NAME = "meta-llama/Meta-Llama-3.1-8B-Instruct"
-# MODEL_NAME = "meta-llama/Meta-Llama-3.1-70B-Instruct"
-
-# MODEL_NAME = "google/gemma-3-12b-it"
-# MODEL_NAME = "google/gemma-3-27b-it"
+MODEL_NAME = ""
 
 # =====================
 # Dataset - Change input and output dataset here
 # =====================
 
-INPUT_CSV = "aita_500_neg_samples_fig_gpt.csv"
-OUTPUT_CSV = "qwen3_4b_evaluation.csv"
+INPUT_CSV = ""
+OUTPUT_CSV = ""
 
 # Default code uses greedy decoding, sampling = False
 MAX_NEW_TOKENS = 15
@@ -122,6 +115,9 @@ def generate_question(title, text):
 # =====================
 # Process dataset for evaluation
 # =====================
+# this code considers csv contains the following headers:
+# literal_title --> literal question
+# figurative title --> either one of the four figurative rewrite
 df = pd.read_csv(INPUT_CSV)
 
 rows = []

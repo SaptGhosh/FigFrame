@@ -9,12 +9,10 @@ from openai import OpenAI
 client = OpenAI(api_key="")
 
 
-# CHANGE BETWEEN GOLD LABEL 
-# POSITIVE AND NEGATIVE SAMPLES
-INPUT_CSV = "ethics_aita_500_positive.csv"
-# INPUT_CSV = "ethics_aita_500_negative.csv"
-OUTPUT_CSV = "aita_500_pos_samples_fig_gpt.csv"
-# OUTPUT_CSV = "aita_500_neg_samples_fig_gpt.csv"
+# Reads the input file
+INPUT_CSV = ""
+# change name of the output file
+OUTPUT_CSV = ""
 
 # =====================
 # Clean question
@@ -56,22 +54,24 @@ for _, row in tqdm(df.iterrows(), total=len(df)):
         input=[
             {
                 "role": "system",
-                "content": '''You are an expert in figurative text generation, particular similes. 
+                "content": '''You are an expert in figurative text generation, particular hyperboles. 
                 You are given a question title from Reddit’s AITA (Am I The Asshole) dataset. 
-                Your task is to rewrite the title using a **clear, natural simile** while preserving its original meaning. 
+                Your task is to rewrite the title using **strong, explicit hyperbole** while preserving its original meaning. 
                 
                 Rules:
                 * Preserve the original events, intent, and moral framing.
                 * Do NOT change who did what or introduce any new facts.
                 * Begin the rewritten title with “aita”.
-                * Include at least one **explicit comparison** using words such as **like, as, as if,** or **similar to.**
-                * The comparison should be creative, natural, and easy to understand—not merely a clich´e or a direct restatement of the original sentence.
+                * Exaggerate the expectations, consequences, or emotional framing to an over-the-top
+                degree while keeping the underlying situation unchanged.
+                * The exaggeration should amplify the author’s perspective without changing the core
+                scenario.
                 * Do NOT explain the rewrite.
                 * Output ONLY the rewritten title.'''
             },
             {"role": "user", "content": "aita for ignoring my roommate after she insulted me?"},
-            {"role": "assistant", "content": "aita for ignoring my roommate after she insulted me like someone closing the door after a storm blew through?"},
-
+            {"role": "assistant", "content": "aita for ignoring my roommate after she brutally tore me apart with her words?"},
+            
             {"role": "user", "content": f"{title}"},
             
         ]
@@ -93,3 +93,8 @@ out_df.to_csv(OUTPUT_CSV, index=False)
 
 print("Saved:", OUTPUT_CSV)
 print(out_df.head())
+
+
+
+
+
