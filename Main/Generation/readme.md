@@ -1,9 +1,12 @@
-Codes to generate figurative variants of a literal question using GPT
+# Figurative Rewrite Generation
 
-The codes read the question, rewrites it into
-i. metaphor,
-ii. hyperbole,
-iii. sarcasm, and 
-iv. simile
+This directory contains the code used to generate figurative variants of literal questions using GPT.
 
-It then saves each rewrite in a csv file.
+The scripts read each original literal question and generate four figurative rewrites:
+
+1. **Metaphor**
+2. **Hyperbole**
+3. **Sarcasm**
+4. **Simile**
+
+The generated variants preserve the underlying meaning of the original question while changing its linguistic framing. Each rewrite is then saved to the corresponding field in the output CSV file.
