@@ -1,5 +1,6 @@
-Codes to evaluate the models
+# Model Evaluation
 
-evaluate_model.py --> run the model reading the input data, saves a csv file with the output
+This directory contains the scripts used to run model evaluations and compute the resulting metrics.
 
-evaluation_result.py --> reads the output csv and prints the results
+- `evaluate_model.py` — Runs a model on the input data and saves the model's responses to a CSV file.
+- `evaluation_result.py` — Reads the generated CSV file and computes and prints the evaluation results.
