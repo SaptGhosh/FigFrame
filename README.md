@@ -13,3 +13,14 @@ The materials provided here are intended to support the reproducibility and eval
 ## Anonymity
 
 This repository has been prepared for double-blind peer review. Author names, affiliations, and other identifying information have been omitted. Questions regarding the materials should be submitted through the official OpenReview discussion forum.
+
+## Repository Structure
+
+All materials are organized under the `Main/` directory.
+
+```text
+Main/
+├── Data_and_Graphs/
+├── Evaluation/
+├── Figurative_Rewrite/
+└── Sycophancy/
