@@ -1,7 +1,12 @@
-Codes to change the polarity of the question to test for sycophancy
+# Polarity and Sycophancy Evaluation
 
-i. negative polarity --> replaces "aita" with "was I in the wrong",
-ii. positive polarity --> replaces "aita" with "was I in the right"
+This directory contains the code used to test whether model judgments are affected by the polarity of the question.
 
-This test how the model response changes when the question is framed with a positive or negative view of the user's action.
-It then runs a selected model and saves it judgment in a csv file.
+The original AITA question is reframed using two different polarities:
+
+1. **Negative polarity** — Replaces "AITA" with "Was I in the wrong?"
+2. **Positive polarity** — Replaces "AITA" with "Was I in the right?"
+
+This experiment examines how model judgments change when the same underlying action is framed from either a positive or negative perspective, allowing us to test whether the observed effects can be attributed to sycophantic agreement with the user's framing.
+
+The scripts then run the selected model on the polarity-controlled questions and save its judgments to a CSV file.
