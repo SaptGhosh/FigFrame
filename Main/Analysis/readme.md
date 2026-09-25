@@ -1,16 +1,25 @@
-Codes used for analysis.
+# Code
 
-I - Data Extraction
-i. truthfulness_data.py --> extracts samples from truthfulQA (truthfulness)
-ii. resume_atlas_data.py --> extracts samples from resume atlas (resume review)
-iii. review_arena_data.py --> extracts samples from review arena (scientific peer review)
+This directory contains the code used for data preparation, evaluation, and analysis.
 
-II- Other domain evaluation
-These codes runs the evaluation for the five domains:
-i. mathematical_reasoning_eval.py
-ii. scientific_reasoning_eval.py
-iii. truthfulness_eval.py
-iv. peer_review_eval.py
-v. resume_review_eval.py
+## I. Data Extraction
 
-III - test_attention.py provides the codes for the attention analysis
+Scripts for extracting and preparing samples from the datasets used in our experiments:
+
+- `truthfulness_data.py` — Extracts samples from TruthfulQA for the **truthfulness** domain.
+- `resume_atlas_data.py` — Extracts samples from ResumeAtlas for the **resume review** domain.
+- `review_arena_data.py` — Extracts samples from ReviewArena for the **scientific peer review** domain.
+
+## II. Domain Evaluation
+
+Scripts for running the evaluation across the five additional domains considered in our experiments:
+
+- `mathematical_reasoning_eval.py` — Mathematical reasoning
+- `scientific_reasoning_eval.py` — Scientific reasoning
+- `truthfulness_eval.py` — Truthfulness
+- `peer_review_eval.py` — Scientific peer review
+- `resume_review_eval.py` — Resume review
+
+## III. Attention Analysis
+
+- `test_attention.py` — Runs the attention-based analysis used to examine differences in model attention patterns between literal and figurative prompts.
